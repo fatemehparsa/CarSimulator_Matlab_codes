@@ -1,0 +1,55 @@
+[System]
+Name='mam2'
+Type='mamdani'
+Version=2.0
+NumInputs=3
+NumOutputs=1
+NumRules=7
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='X1'
+Range=[0 700]
+NumMFs=3
+MF1='Low':'trapmf',[-192 -153 45.1 99.8942917547568]
+MF2='Mean':'trapmf',[25.8999154334039 78.9999154334039 137.979915433404 191.579915433404]
+MF3='much':'trapmf',[116.644820295983 202.044820295983 629.644820295983 678.644820295983]
+
+[Input2]
+Name='X2'
+Range=[0 700]
+NumMFs=3
+MF1='Low':'trapmf',[-195 -122 34.7780126849894 99.9]
+MF2='medium':'trapmf',[54.0169133192389 101 161 211]
+MF3='much':'trapmf',[128 211 712.579281183932 763]
+
+[Input3]
+Name='X3'
+Range=[0 700]
+NumMFs=3
+MF1='Low':'trapmf',[-262 -36.6 37.737843551797 103]
+MF2='medium':'trapmf',[43.7 94 163.53065539112 221]
+MF3='much':'trapmf',[156.131078224101 238 702 703]
+
+[Output1]
+Name='Z'
+Range=[-40 40]
+NumMFs=5
+MF1='turn_left':'gbellmf',[4.1215644820296 30.2 -41.5]
+MF2='a_bit_turn_left':'gaussmf',[6.37530032118945 -18.5]
+MF3='Go_Stright':'trapmf',[-0.338 0.677 1.01 1.01]
+MF4='a_bit_turn_right':'gaussmf',[5.89300045743183 20.3]
+MF5='Turn_Right':'gbellmf',[4.04503171247359 26.2 42.1]
+
+[Rules]
+1 2 1, 2 (1) : 1
+1 3 1, 1 (1) : 1
+1 1 3, 5 (1) : 1
+1 1 2, 4 (1) : 1
+2 3 2, 1 (1) : 1
+2 2 3, 5 (1) : 1
+-1 1 1, 3 (1) : 2

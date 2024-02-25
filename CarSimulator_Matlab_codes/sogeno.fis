@@ -1,0 +1,57 @@
+[System]
+Name='sogeno'
+Type='sugeno'
+Version=2.0
+NumInputs=3
+NumOutputs=1
+NumRules=9
+AndMethod='min'
+OrMethod='max'
+ImpMethod='prod'
+AggMethod='sum'
+DefuzzMethod='wtsum'
+
+[Input1]
+Name='X1'
+Range=[0 700]
+NumMFs=3
+MF1='Low':'trapmf',[-263 -29.2 54 102.854122621564]
+MF2='Mean':'trapmf',[87.5 118 177 216.807610993657]
+MF3='much':'trapmf',[205 232 719.978858350951 730]
+
+[Input2]
+Name='X2'
+Range=[0 700]
+NumMFs=3
+MF1='Low':'trapmf',[-263 -29.2 57 101.374207188161]
+MF2='medium':'trapmf',[87.5 121 181 213.84778012685]
+MF3='much':'trapmf',[203 244 720 784]
+
+[Input3]
+Name='X3'
+Range=[0 700]
+NumMFs=3
+MF1='Low':'trapmf',[-263 -29.2 59.9 99.8942917547568]
+MF2='medium':'trapmf',[87.5 121 174 215.327695560254]
+MF3='much':'trapmf',[204 229 724 729]
+
+[Output1]
+Name='Z'
+Range=[-40 40]
+NumMFs=5
+MF1='turn_left':'constant',[-40]
+MF2='a_bit_turn_left':'constant',[-30]
+MF3='Go_Straight':'constant',[0]
+MF4='a_bit_turn_right':'constant',[30]
+MF5='Turn_Right':'constant',[40]
+
+[Rules]
+1 2 1, 2 (1) : 1
+1 3 1, 1 (1) : 1
+1 1 3, 5 (1) : 1
+1 1 2, 4 (1) : 1
+2 3 2, 1 (1) : 1
+2 2 3, 5 (1) : 1
+-1 1 1, 3 (1) : 2
+2 1 3, 5 (1) : 2
+2 3 1, 1 (1) : 2
